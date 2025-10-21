@@ -170,4 +170,61 @@ function retanguleInformations({comprimento, largura}: Retangule){
     }
 }
 
-console.log(retanguleInformations({comprimento: 10, largura: 12}))
+// console.log(retanguleInformations({comprimento: 10, largura: 12}))
+
+
+
+
+type converterUnity = {
+    unity_atual: 'centimeter' | 'meter'
+    value: number
+}
+
+
+function converterUnityF({unity_atual, value}: converterUnity){
+    
+    if (unity_atual === 'centimeter'){
+        const result = value / 100
+        return `você quiz converter ${value} para metros, o resultado foi: ${result}`
+    }
+
+     else if(unity_atual === 'meter'){
+        const result = value * 100
+        return `você quiz converter ${value} para centímetros, o resultado foi: ${result}`
+
+    }
+    else if (unity_atual !== 'centimeter' || unity_atual !== 'meter' ){
+        return 'só pode ser {centimeter} ou {meter}'
+    }
+}
+
+
+const meuTamanho = converterUnityF({unity_atual: 'centimeter', value: 160})
+
+// console.log(meuTamanho)
+
+
+
+type figure = {
+    base: number
+    altura: number
+}
+
+
+function quantidadeAzulejosParaFigure({base, altura}:figure){
+    const azulejos = 5 * 5
+    let newAzulejo =  0
+    const tamanhoFigura = (base * altura) 
+
+    for(let qAzulejo = 1; newAzulejo < tamanhoFigura; qAzulejo++ ){
+       newAzulejo = newAzulejo + azulejos
+       if(newAzulejo === tamanhoFigura){
+           return `A quantidade de azulejos necessários para preencher essa figura foi: ${qAzulejo}`
+
+       }
+    }
+
+}
+
+const parede = quantidadeAzulejosParaFigure({altura: 25, base: 3})
+console.log(parede)
